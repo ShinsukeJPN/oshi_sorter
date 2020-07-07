@@ -1,0 +1,5 @@
+- @objects.each do |object|
+  = object.name
+  = object.kana_name
+  - unless object.image.url.nil?
+    = image_tag object.image.url

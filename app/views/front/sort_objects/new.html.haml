@@ -1,0 +1,7 @@
+= form_with url: sort_objects_path do |f|
+  = f.label :name 
+  = f.text_field :name
+  = f.label :kana_name 
+  = f.text_field :kana_name
+  = f.file_field :image
+  = f.submit
