@@ -1,0 +1,5 @@
+- @themas.each do |thema|
+  %table
+    %tr
+      = link_to thema.title, sort_thema_path(thema.id)
+      

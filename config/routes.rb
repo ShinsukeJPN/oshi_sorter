@@ -6,10 +6,14 @@ Rails.application.routes.draw do
 
   scope module: 'front' do
     resources :sort_objects
-    resources :themas
+    resources :themas do
+      member do
+        get :sort
+      end
+    end
     resources :categories
   end
 
   get 'get_objects', to: 'front/themas#get_objects'
-
+  get 'return_first_objects', to: 'front/themas#return_first_objects'
 end

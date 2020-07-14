@@ -12,14 +12,12 @@
       テーマ登録
     %div{id: "app"}
       %div
-        = form_with url: themas_path do |f|
+        = form_for @thema do |f|
           = f.label :title
           = f.text_field :title
           = f.label :detail 
           = f.text_area :detail
           = f.label :category_id
-          = f.hidden_field :category_id, value: ''
-          = f.hidden_field :object_ids, multiple: true
           = f.submit
       %li{"v-for": "object in checkedObjects"}
         {{object[1]}}

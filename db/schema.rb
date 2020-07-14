@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_28_114632) do
+ActiveRecord::Schema.define(version: 2020_07_12_091052) do
 
   create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name"
@@ -25,6 +25,13 @@ ActiveRecord::Schema.define(version: 2020_06_28_114632) do
     t.string "name"
     t.string "kana_name"
     t.string "image"
+  end
+
+  create_table "sort_object_themas", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "sort_object_id"
+    t.bigint "thema_id"
+    t.index ["sort_object_id"], name: "index_sort_object_themas_on_sort_object_id"
+    t.index ["thema_id"], name: "index_sort_object_themas_on_thema_id"
   end
 
   create_table "sort_objects", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -45,4 +52,6 @@ ActiveRecord::Schema.define(version: 2020_06_28_114632) do
     t.text "detail"
   end
 
+  add_foreign_key "sort_object_themas", "sort_objects"
+  add_foreign_key "sort_object_themas", "themas"
 end
