@@ -2,39 +2,37 @@
   %head
     %title
       テーマ
-    %a{rel: 'stylesheet', href: '/stylesheets/style.css'}
-    %script{src: "https://unpkg.com/axios/dist/axios.min.js"}
-    %script{src: "https://unpkg.com/vue"}
-    %script{src: "https://code.jquery.com/jquery-3.3.1.min.js"}
     = javascript_pack_tag 'thema.js', 'data-turbolinks-track': 'reload', defer: true
   %body
     %h1
       テーマ登録
     %div{id: "app"}
-      %div
-        = form_for @thema do |f|
-          = f.label :title
-          = f.text_field :title
-          = f.label :detail 
-          = f.text_area :detail
-          = f.label :category_id
-          = f.submit
-      %li{"v-for": "object in checkedObjects"}
-        {{object[1]}}
-      -# %input{type: "text", "v-model": "category", placeholder: "カテゴリー名"}
-      -# %button{"v-on:click": "onClickCategory"}検索
-      -# %button{"v-on:click": "select", style: "display: none;"}確定
-      -# .container.js-objectIndex
-        -# .row{'v-show': 'categoryIndexBool'}
-          -# %li{"v-for":"category in categoriesIndex", ":key":"category.name"}
-            -# %input{type: "checkbox", id: "checkCategory", ":value": "[category.id, category.name]", "v-model": "categoryIndex", "@change": "checkCategoryName($event)"}
-              -# {{category.name}}
-      %input{type: "text", "v-model": "name", placeholder: "ひらがな"}
-      %button{"v-on:click": "onClick"}検索
-      -# %button{"v-on:click": "select", style: "display: none;"}確定
+      %div{class: "row"}
+        %div{class: "columns medium-4"}
+          = form_for @thema do |f|
+            = f.label :title
+            = f.text_field :title
+            = f.label :detail
+            = f.text_area :detail
+            = f.label :category_id
+            = f.submit '登録', class: "success button"
+          -# %input{type: "text", "v-model": "category", placeholder: "カテゴリー名"}
+          -# %button{"v-on:click": "onClickCategory"}検索
+          -# %button{"v-on:click": "select", style: "display: none;"}確定
+          -# .container.js-objectIndex
+            -# .row{'v-show': 'categoryIndexBool'}
+              -# %li{"v-for":"category in categoriesIndex", ":key":"category.name"}
+                -# %input{type: "checkbox", id: "checkCategory", ":value": "[category.id, category.name]", "v-model": "categoryIndex", "@change": "checkCategoryName($event)"}
+                  -# {{category.name}}
+          %input{type: "text", "v-model": "name", placeholder: "ひらがな"}
+          %button{"v-on:click": "onClick", class: "button"}検索
+          -# %button{"v-on:click": "select", style: "display: none;"}確定
+        %div{class: "columns medium-8"}
+          %li{"v-for": "object in checkedObjects"}
+            {{object[1]}}
       .container.js-objectIndex
         .row{'v-show': 'objectIndexBool'}
           %li{"v-for":"object in objectIndex", ":key":"object.name"}
             %input{type: "checkbox", name: "object", id: "checkName", ":value": "[object.id, object.name]", "v-model": "checkedObjects", "@change": "checkObjectName($event)"}
               {{object.name}}
-              {{object.image.url}}
+              {{object.image.url}}}

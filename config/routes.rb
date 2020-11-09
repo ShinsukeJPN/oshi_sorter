@@ -16,4 +16,6 @@ Rails.application.routes.draw do
 
   get 'get_objects', to: 'front/themas#get_objects'
   get 'return_first_objects', to: 'front/themas#return_first_objects'
+
+  get 'get_sort_objects', to: 'front/api#get_sort_objects'
 end

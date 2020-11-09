@@ -7,7 +7,17 @@ class Front::ThemasController < ApplicationController
   def create
     @thema = Thema.new(thema_parameter)
     @thema.save
-    redirect_to front_themas_path
+    redirect_to themas_path
+  end
+
+  def edit
+    @thema = Thema.find_by(id: params[:id])
+  end
+
+  def update
+    @thema = Thema.find_by(id: params[:id])
+    @thema.update(thema_parameter)
+    redirect_to themas_path
   end
 
   def index
@@ -15,7 +25,7 @@ class Front::ThemasController < ApplicationController
   end
 
   def sort
-    @thema = Thema.find_by(params[:id])
+    @thema = Thema.find_by(id: params[:id])
   end
 
   def get_objects
@@ -24,9 +34,15 @@ class Front::ThemasController < ApplicationController
   end
 
   def return_first_objects
-    thema = Thema.find_by(params[:id])
+    thema = Thema.find_by(id: params[:id])
     @objects = thema.objects.sample(2)
     render :sort, formats: :json, handlers: 'jbuilder'
+  end
+
+  def destroy
+    thema = Thema.find_by(id: params[:id])
+    thema.destroy
+    redirect_to themas_path    
   end
 
   private

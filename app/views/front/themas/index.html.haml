@@ -1,5 +1,21 @@
-- @themas.each do |thema|
-  %table
-    %tr
-      = link_to thema.title, sort_thema_path(thema.id)
-      
+= javascript_pack_tag 'thema.js', 'data-turbolinks-track': 'reload', defer: true
+%div{id: "app"}
+  %div{class: "columns medium-9"}
+    %table{class: "hover"}
+      %thead
+        %tr
+          %th{width: 200} ソート名
+          %th{width: 100} 編集
+          %th{width: 100} 削除
+        %tr
+      %tbody
+        - @themas.each do |thema|
+          %tr
+            %td= link_to thema.title, sort_thema_path(thema.id)
+            %td= link_to "編集", edit_thema_path(thema.id)
+            %td
+              %button.p-modalBtn{"@click": "openItem"}削除
+              %div.p-modal{id: "thema_#{thema.id}", ":class": "{'is-open': isModalActive}"}
+                = link_to "削除", thema_path(thema.id), method: :delete
+                %div.button-cancel
+                  %a{href: ""}キャンセル

@@ -1,0 +1,23 @@
+.p-modal {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  overflow-y: auto;
+  visibility: hidden;
+  opacity: 0;
+  z-index: -1;
+}
+
+.is-open {
+  position: relative;
+  width: 50px;
+  height: 100px;
+  visibility: visible;
+  z-index: 100;
+}
+
+.button-cancel{
+  color: black;
+}

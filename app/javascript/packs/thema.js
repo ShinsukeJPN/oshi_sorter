@@ -8,7 +8,8 @@ var app = new Vue({
     checkedObjects: [],
     checkedNamesBool: false,
     categoryIndex: {},
-    categoryIndexBool: false
+    categoryIndexBool: false,
+    isModalActive: false
   },
   methods: {
     onClick: function(){
@@ -35,6 +36,13 @@ var app = new Vue({
       for (let i = 0; i < objects.length; i++){
         create_input_hidden(objects[i], 'new_thema');
       }
+    },
+    openItem() {
+      console.log(this);
+      this.toggleModal();
+    },
+    toggleModal() {
+      this.isModalActive = true;
     },
   }
 });
