@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_12_091052) do
+ActiveRecord::Schema.define(version: 2020_09_17_145742) do
 
   create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name"
@@ -50,6 +50,7 @@ ActiveRecord::Schema.define(version: 2020_07_12_091052) do
     t.string "title"
     t.integer "category_id"
     t.text "detail"
+    t.string "password"
   end
 
   add_foreign_key "sort_object_themas", "sort_objects"
